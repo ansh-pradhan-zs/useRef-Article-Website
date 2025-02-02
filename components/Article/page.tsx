@@ -77,7 +77,6 @@ const Article = () => {
           className={styles.coverImage}
         />
       </div>
-
       {/* Definition*/}
       <CoolWrapper
         wrapperShadowColor="#d14e98"
@@ -85,7 +84,11 @@ const Article = () => {
         marginTop="large"
       >
         <section>
-          <Heading title="Definition" subTitle="What is useRef() hook ?" />
+          <Heading
+            title="Definition"
+            subTitle="What is useRef() hook ?"
+            titleFontWeight="dark"
+          />
           <ul className={styles.list}>
             <li>
               In React, the useRef hook is used to create a mutable reference
@@ -99,7 +102,6 @@ const Article = () => {
           </ul>
         </section>
       </CoolWrapper>
-
       {/* Usage & Syntax */}
       <CoolWrapper
         wrapperShadowColor="#d14e98"
@@ -110,13 +112,15 @@ const Article = () => {
           <Heading
             title="Usage & Syntax"
             subTitle="React syntax & best practices."
+            titleFontSize="large"
+            titleFontWeight="dark"
           />
           {/* Syntax */}
           <div className={styles.syntaxDiv}>
             <Heading
               title="Syntax"
-              titleFontWeight="medium"
-              titleFontSize="medium"
+              titleFontWeight="dark"
+              titleFontSize="small"
             />
             <CoolWrapper wrapperShadowColor="#ff8b0f" wrapperPadding={10}>
               <div className={styles.syntaxInfo}>
@@ -145,15 +149,15 @@ const Article = () => {
           <div className={styles.syntaxDiv}>
             <Heading
               title="Usages"
-              titleFontWeight="medium"
-              titleFontSize="medium"
+              titleFontWeight="dark"
+              titleFontSize="small"
             />
             <CoolWrapper
               wrapperShadowColor="#ff8b0f"
               wrapperPadding={10}
               wrapperWidth="full"
             >
-              <div>
+              <div className={styles.usages}>
                 It can be used to access a{" "}
                 <Highlight highlightColor="red">DOM</Highlight> element
                 directly.
@@ -164,7 +168,7 @@ const Article = () => {
               wrapperPadding={10}
               wrapperWidth="full"
             >
-              <div>
+              <div className={styles.usages}>
                 The useRef Hook allows you to
                 <Highlight highlightColor="red">persist</Highlight> values
                 between renders.
@@ -175,7 +179,7 @@ const Article = () => {
               wrapperPadding={10}
               wrapperWidth="full"
             >
-              <div>
+              <div className={styles.usages}>
                 It can be used to store a
                 <Highlight highlightColor="red">mutable</Highlight> value that
                 does not cause a re-render when updated.
@@ -184,7 +188,6 @@ const Article = () => {
           </div>
         </section>
       </CoolWrapper>
-
       {/* Use Cases */}
       <CoolWrapper wrapperWidth="large" marginTop="large">
         <section>
@@ -193,8 +196,8 @@ const Article = () => {
           <div className={styles.useCases}>
             <Heading
               title="Programmatic File Input Trigger"
-              titleFontSize="medium"
-              titleFontWeight="medium"
+              titleFontSize="small"
+              titleFontWeight="dark"
             />
             <CoolWrapper wrapperShadowColor="#ff8b0f" wrapperPadding={10}>
               <div className={styles.useCase1}>
@@ -232,8 +235,8 @@ const Article = () => {
           <div className={styles.useCases}>
             <Heading
               title="Scroll-To Animation"
-              titleFontSize="medium"
-              titleFontWeight="medium"
+              titleFontSize="small"
+              titleFontWeight="dark"
             />
             <CoolWrapper wrapperShadowColor="#ff8b0f" wrapperPadding={10}>
               <div className={styles.useCase1}>
@@ -288,8 +291,8 @@ const Article = () => {
           <div className={styles.useCases}>
             <Heading
               title="Persisting Values Across Renders"
-              titleFontSize="medium"
-              titleFontWeight="medium"
+              titleFontSize="small"
+              titleFontWeight="dark"
             />
             <CoolWrapper wrapperShadowColor="#ff8b0f" wrapperPadding={10}>
               <div className={styles.useCase1}>
@@ -359,6 +362,7 @@ const Article = () => {
                   <button
                     className={styles.startGameButton}
                     onClick={() => {
+                      reactionTimes.current = [];
                       setShowResult(false);
                       setStartGame(true);
                     }}
@@ -371,9 +375,15 @@ const Article = () => {
               {showResult ? (
                 <div className={styles.reactionTime}>
                   Your Average Reaction Time Is:
-                  <Highlight highlightColor="green">
-                    {avgReactionTime + "ms"}
-                  </Highlight>
+                  {Number.isNaN(avgReactionTime) ? (
+                    <Highlight highlightColor="red">
+                      Press Reaction Boxes
+                    </Highlight>
+                  ) : (
+                    <Highlight highlightColor="green">
+                      {avgReactionTime + "ms"}
+                    </Highlight>
+                  )}
                 </div>
               ) : (
                 <div className={styles.reactionGrid}>

@@ -167,3 +167,45 @@
 .creatorMessage {
   margin-top: 2rem;
 }
+
+@media (max-width: 480px) {
+  .syntaxInfo {
+    flex-direction: column;
+  }
+
+  .syntaxImg {
+    width: 16rem;
+    height: 6rem;
+  }
+
+  .inputRefVideo {
+    width: 16rem;
+  }
+
+  .list {
+    font-size: 0.8rem;
+  }
+
+  .usages {
+    font-size: 0.8rem;
+  }
+
+  .coverImageContainer {
+    width: 100%;
+  }
+
+  .useCase2 {
+    border-radius: 7px;
+  }
+
+  .gameHeadingContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .startGameButton {
+    font-size: 0.8rem;
+  }
+  .reactionGrid {
+    gap: 5px;
+  }
+}

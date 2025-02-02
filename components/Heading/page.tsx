@@ -14,27 +14,23 @@ const Heading = ({
   titleFontWeight,
   titleFontSize,
 }: HeadingTypes) => {
+  const fontWeight =
+    titleFontWeight === "light"
+      ? styles.fwLight
+      : titleFontWeight === "medium"
+      ? styles.fwMedium
+      : styles.fwDark;
+
+  const fontSize =
+    titleFontSize === "small"
+      ? styles.fsSmall
+      : titleFontSize === "medium"
+      ? styles.fsMedium
+      : styles.fsLarge;
+
   return (
     <div>
-      <h1
-        className={styles.title}
-        style={{
-          fontWeight:
-            titleFontWeight === "light"
-              ? 200
-              : titleFontWeight === "medium"
-              ? 500
-              : 900,
-          fontSize:
-            titleFontSize === "small"
-              ? "1.5rem"
-              : titleFontSize === "medium"
-              ? "2.5rem"
-              : "3.5rem",
-        }}
-      >
-        {title}
-      </h1>
+      <h1 className={`${fontWeight} ${fontSize}`}>{title}</h1>
       <h3 className={styles.subTitle}>{subTitle}</h3>
     </div>
   );

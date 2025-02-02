@@ -16,28 +16,30 @@ const CoolWrapper = ({
   wrapperPadding = 30,
   marginTop,
 }: CoolWrapper) => {
+  const width =
+    wrapperWidth === "small"
+      ? styles.wSmall
+      : wrapperWidth === "medium"
+      ? styles.wMedium
+      : wrapperWidth === "large"
+      ? styles.wLarge
+      : wrapperWidth === "full"
+      ? styles.wFull
+      : styles.wFitContent;
+
+  const marginT =
+    marginTop === "large"
+      ? styles.mLarge
+      : marginTop === "medium"
+      ? styles.mMedium
+      : styles.mSmall;
+
   return (
     <main
-      className={styles.wrapper}
+      className={`${styles.wrapper} ${width} ${marginT}`}
       style={{
-        width:
-          wrapperWidth === "small"
-            ? "40%"
-            : wrapperWidth === "medium"
-            ? "60%"
-            : wrapperWidth === "large"
-            ? "90%"
-            : wrapperWidth === "full"
-            ? "100%"
-            : "fit-content",
         boxShadow: `-10px 10px 0px ${wrapperShadowColor}`,
         padding: `${wrapperPadding}px`,
-        marginTop:
-          marginTop === "large"
-            ? "3rem"
-            : marginTop === "medium"
-            ? "2rem"
-            : "1rem",
       }}
     >
       {children}

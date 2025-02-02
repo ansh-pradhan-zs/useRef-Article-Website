@@ -7,3 +7,45 @@
   box-shadow: -10px 10px 0px;
   position: relative;
 }
+
+/* width */
+
+.wSmall {
+  width: 40%;
+}
+
+.wMedium {
+  width: 60%;
+}
+
+.wLarge {
+  width: 90%;
+}
+
+.wFull {
+  width: 100%;
+}
+
+.wFitContent {
+  width: fit-content;
+}
+
+/* Margin */
+
+.mSmall {
+  margin-top: 1rem;
+}
+
+.mMedium {
+  margin-top: 2rem;
+}
+
+.mLarge {
+  margin-top: 3rem;
+}
+
+@media (max-width) {
+  .wLarge {
+    width: 95%;
+  }
+}
