@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import styles from "./article.module.css";
 import Image from "next/image";
 import cover from "../../public/react-useref.jpg";
@@ -21,6 +21,12 @@ const Article = () => {
   const [avgReactionTime, setAvgReactionTime] = useState<number>(0);
   const reactionTimes = useRef<number[]>([]);
   const flashStartTime = useRef<number | null>(null);
+
+  // ? scroll to section refs
+  const definitionSection = useRef<HTMLElement | null>(null);
+  const usageNSyntaxSection = useRef<HTMLElement | null>(null);
+  const useCasesSection = useRef<HTMLElement | null>(null);
+  const gameSection = useRef<HTMLElement | null>(null);
 
   function handleBoxClick(index: number) {
     if (index === activeBox && flashStartTime.current) {
@@ -68,6 +74,10 @@ const Article = () => {
     };
   }, [startGame]);
 
+  function scrollToSection(sectionRef: RefObject<HTMLElement>) {
+    sectionRef?.current.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <div className={styles.articleContainer}>
       <div className={styles.coverImageContainer}>
@@ -77,13 +87,22 @@ const Article = () => {
           className={styles.coverImage}
         />
       </div>
+      <button
+        className={styles.gameActionButton}
+        onClick={() => {
+          // @ts-ignore
+          scrollToSection(gameSection);
+        }}
+      >
+        Let's Play
+      </button>
       {/* Definition*/}
       <CoolWrapper
         wrapperShadowColor="#d14e98"
         wrapperWidth="large"
         marginTop="large"
       >
-        <section>
+        <section ref={definitionSection}>
           <Heading
             title="Definition"
             subTitle="What is useRef() hook ?"
@@ -108,7 +127,7 @@ const Article = () => {
         wrapperWidth="large"
         marginTop="large"
       >
-        <section>
+        <section ref={usageNSyntaxSection}>
           <Heading
             title="Usage & Syntax"
             subTitle="React syntax & best practices."
@@ -190,7 +209,7 @@ const Article = () => {
       </CoolWrapper>
       {/* Use Cases */}
       <CoolWrapper wrapperWidth="large" marginTop="large">
-        <section>
+        <section ref={useCasesSection}>
           <Heading title="Interesting Use Cases" />
           {/* Programatic input file trigger */}
           <div className={styles.useCases}>
@@ -345,7 +364,7 @@ const Article = () => {
       </CoolWrapper>
       {/* Game to show useref functionality */}
       <CoolWrapper wrapperWidth="large" marginTop="large">
-        <section className={styles.gameSection}>
+        <section ref={gameSection} className={styles.gameSection}>
           <Heading title="Lets Play A Game" />
           <CoolWrapper wrapperWidth="full" wrapperShadowColor="green">
             {/* game div */}
