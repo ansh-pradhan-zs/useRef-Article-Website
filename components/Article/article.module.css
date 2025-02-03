@@ -107,6 +107,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .reactionBoxPlaceholder {
@@ -117,6 +118,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .gameHeadingContainer {
@@ -135,12 +137,13 @@
   outline: none;
   border: none;
   box-shadow: -4px 5px 0px 1px black;
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }
 
 .startGameButton:hover {
   scale: 110%;
   transition: 200ms ease-in-out;
-  cursor: grab;
 }
 
 .gameStartButtonTimerDiv {
@@ -181,6 +184,8 @@
   margin-top: 3rem;
   animation: pulse 0.8s infinite alternate;
   box-shadow: -4px 5px 0px 1px black;
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }
 
 @keyframes pulse {
