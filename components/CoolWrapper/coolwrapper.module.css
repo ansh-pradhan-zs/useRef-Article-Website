@@ -44,8 +44,43 @@
   margin-top: 3rem;
 }
 
+/* For mobile Phones */
+
 @media (max-width: 480px) {
   .wLarge {
     width: 95%;
+  }
+}
+
+/* For Tablets */
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .wrapper {
+    border-radius: 12px;
+    box-shadow: -8px 8px 0px;
+  }
+
+  .wSmall {
+    width: 50%;
+  }
+
+  .wMedium {
+    width: 70%;
+  }
+
+  .wLarge {
+    width: 95%;
+  }
+
+  .mSmall {
+    margin-top: 0.8rem;
+  }
+
+  .mMedium {
+    margin-top: 1.5rem;
+  }
+
+  .mLarge {
+    margin-top: 2.5rem;
   }
 }
