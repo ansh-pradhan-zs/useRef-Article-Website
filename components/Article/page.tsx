@@ -24,10 +24,18 @@ const Article = () => {
   const flashStartTime = useRef<number | null>(null);
 
   // ? scroll to section refs
-  const definitionSection = useRef<HTMLElement | null>(null);
-  const usageNSyntaxSection = useRef<HTMLElement | null>(null);
-  const useCasesSection = useRef<HTMLElement | null>(null);
-  const gameSection = useRef<HTMLElement | null>(null);
+  const definitionSection = useRef<HTMLElement | null>(
+    null
+  ) as RefObject<HTMLElement>;
+  const usageNSyntaxSection = useRef<HTMLElement | null>(
+    null
+  ) as RefObject<HTMLElement>;
+  const useCasesSection = useRef<HTMLElement | null>(
+    null
+  ) as RefObject<HTMLElement>;
+  const gameSection = useRef<HTMLElement | null>(
+    null
+  ) as RefObject<HTMLElement>;
 
   function handleBoxClick(index: number) {
     if (index === activeBox && flashStartTime.current) {
@@ -459,7 +467,6 @@ const Article = () => {
       </span>
       <ScrollToNav
         scrollToSection={scrollToSection}
-        // @ts-ignore
         sections={{
           definition: definitionSection,
           usageSyntax: usageNSyntaxSection,
