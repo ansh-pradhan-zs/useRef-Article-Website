@@ -12,6 +12,7 @@ import usecase2 from "../../public/usecase2.jpeg";
 import usecase1 from "../../public/usecase1pic.jpeg";
 import persist from "../../public/persist.jpeg";
 import gameCode from "../../public/gamecode.jpeg";
+import ScrollToNav from "../ScrollToNav/page";
 
 const Article = () => {
   const [activeBox, setActiveBox] = useState<number>();
@@ -456,6 +457,16 @@ const Article = () => {
       <span className={styles.creatorMessage}>
         Made with ❤️ by Ansh Pradhan
       </span>
+      <ScrollToNav
+        scrollToSection={scrollToSection}
+        // @ts-ignore
+        sections={{
+          definition: definitionSection,
+          usageSyntax: usageNSyntaxSection,
+          useCases: useCasesSection,
+          game: gameSection,
+        }}
+      />
     </div>
   );
 };
