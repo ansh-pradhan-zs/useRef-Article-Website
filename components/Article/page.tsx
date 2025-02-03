@@ -13,6 +13,8 @@ import usecase1 from "../../public/usecase1pic.jpeg";
 import persist from "../../public/persist.jpeg";
 import gameCode from "../../public/gamecode.jpeg";
 import ScrollToNav from "../ScrollToNav/page";
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
 
 const Article = () => {
   const [activeBox, setActiveBox] = useState<number>();
@@ -462,9 +464,17 @@ const Article = () => {
           </div>
         </section>
       </CoolWrapper>
-      <span className={styles.creatorMessage}>
-        Made with ❤️ by Ansh Pradhan
-      </span>
+      <div className={styles.creatorMessage}>
+        <span>Made with ❤️ by Ansh Pradhan</span>
+        <Link
+          href={"https://github.com/ansh-pradhan-zs/useRef-Article-Website"}
+          target="_blank"
+        >
+          <span>
+            <FaGithub /> Source Code
+          </span>
+        </Link>
+      </div>
       <ScrollToNav
         scrollToSection={scrollToSection}
         sections={{
