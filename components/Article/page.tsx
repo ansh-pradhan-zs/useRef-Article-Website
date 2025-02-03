@@ -39,6 +39,9 @@ const Article = () => {
     null
   ) as RefObject<HTMLElement>;
 
+  // ? Reaction Time Game Logic Code Below
+
+  // * handleBoxxClick function stores the reaction time into the reactionTimes useRef variable by calculating the difference between the flashStartTime and the moment when the active div was clicked
   function handleBoxClick(index: number) {
     if (index === activeBox && flashStartTime.current) {
       const reactionTime = performance.now() - flashStartTime.current;
@@ -46,6 +49,7 @@ const Article = () => {
     }
   }
 
+  // * calculateAverageReactionTime function runs after the game is over and sums up all the reaction times from the reactionTimes array created using useRef and sets the average reaction time into the avgReactionTime state variable.
   function calculateAverageReactionTime() {
     const sum = reactionTimes.current.reduce((sum, current) => {
       sum += current;
@@ -57,17 +61,25 @@ const Article = () => {
   }
 
   useEffect(() => {
+    // * useEffect Does not run if the startGame is false, hence preventing the game to start on its own.
     if (!startGame) return;
 
+    // * This is a key function in the reaction time game, it flashes a random reaction box in the UI, combined with a setInterval function which runs every 1 second it flashes a random box after every second.
     function flashRandomBox() {
       const randomBoxIndex = Math.floor(Math.random() * 15);
       setActiveBox(randomBoxIndex);
       flashStartTime.current = performance.now();
     }
+
+    // * timerIntervalId is used to track the time remaining till the reaction game stops, it has been hard coded to 5 seconds, which means that the game will run for exactly 5 seconds
     const timerIntervalId = setInterval(() => {
       setTimeRemaining((prev) => prev - 1);
     }, 1000);
+
+    // * intervalId, is the setInterval function responsible for flashing a random box combined with the flashRandomBox function
     const intervalId = setInterval(flashRandomBox, 1000);
+
+    // * timeoutId, this setInterval is responsible for keeping the game state alive for a period of 5 seconds
     const timeoutId = setInterval(() => {
       clearInterval(intervalId);
       clearInterval(timerIntervalId);
@@ -78,6 +90,7 @@ const Article = () => {
       calculateAverageReactionTime();
     }, 5000);
 
+    // * cleaning up the intervals and timeout Ids
     return () => {
       clearTimeout(timeoutId);
       clearInterval(intervalId);
